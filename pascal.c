@@ -57,3 +57,8 @@ void pascal_triangle(int row)
     {   printf("Row must be from 0 to 29.\n");
     } 
 }
+
+int main(void)
+{
+    return 0;
+}
