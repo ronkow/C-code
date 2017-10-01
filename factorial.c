@@ -24,3 +24,7 @@ int factorial(int n)
 	}
 }
 
+int main(void)
+{
+    return 0;
+}
