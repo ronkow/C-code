@@ -148,3 +148,8 @@ void display_month(int month, int year)
     }  
     printf("\n");
 }
+
+int main(void)
+{
+    return 0;
+}
