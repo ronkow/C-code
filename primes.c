@@ -49,9 +49,8 @@ void print_primes(int n)
     }    
 }
 
-int main()
+int main(void)
 {   // Edit the number n to test
     print_primes(50);
-    
     return 0;
 }
