@@ -1,6 +1,7 @@
 /*
 cipher_vigenere.c
 -----------------
+In cryptography, a cipher is an algorithm for performing encryption or decryption.
 
 In a Vigenere Cipher, the same letter can be replaced by different letters at different times during the encryption process.
 Instead of a key of letters, the key for a Vigenere cipher is a sequence of integers. 
@@ -15,8 +16,15 @@ The key is repeated as shown in the middle row.
 Each plain text letter in the first row is shifted by the corresponding number in the key to get the encrypted text in the bottom row. 
 Punctuation, space and other non-letter characters remain unchanged.
 
+shift_char(c, n) shifts a character c (a to z/A to Z) by n characters to the right (positive n) or the left (negative n).
+if a character is shifted beyond Z or before A, it wraps around.
+
+vigenere(s,key) encrypts a string.
+unvigenere(s,key) decrypts a string.
 */
 
+#include <stdio.h>
+#include <string.h>
 
 char shift_char(char c, int n)
 {   int n1 = n%26;
@@ -40,9 +48,6 @@ char shift_char(char c, int n)
     }
     return c;
 }
-
-#include <stdio.h>
-#include <string.h>
 
 char *vigenere(char *s, int *key) 
 {   int length = (int)strlen(s);
@@ -82,9 +87,9 @@ char *unvigenere(char *s, int *key)
 
 int main(void) 
 {   // Edit the text and the Vigenere key to test
-    char text[] = "The quick brown fox jumps over the lazy dog!"
+    char text[] = "The quick brown fox jumps over the lazy dog!";
     int vkey[] = {7, 5, -6, 22, -13, 6, 0};
-    printf("%s\n", vigenere(text), vkey);
-    printf("%s\n", unvigenere(text), vkey);
+    printf("%s\n", vigenere(text, vkey));
+    printf("%s\n", unvigenere(text, vkey));
     return 0;
 }
