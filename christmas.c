@@ -40,10 +40,9 @@ void print_song(int n)
     }    
 }
 
-int main()
+int main(void)
 {   // Edit the number of days to test
     print_song(12);
-    
     return 0;
 }
 /*
