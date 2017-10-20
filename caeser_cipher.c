@@ -1,5 +1,5 @@
 /*
-cipher.c
+caeser_cipher.c
 ---------
 In cryptography, a cipher is an algorithm for performing encryption or decryption.
 
@@ -11,11 +11,14 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 d e f g h i j k l m n o p q r s t u v w x y z a b c
 A Caeser Cipher is easily cracked because there are only 26 possible shifts.
 
-shift_char(c, n) shifts a character c by n characters to the right (positive n) or the left (negative n).
+shift_char(c, n) shifts a character c (a to z/A to Z) by n characters to the right (positive n) or the left (negative n).
+if a character is shifted beyond Z or before A, it wraps around.
 
+caeser(s,n) encrypts/decrypts a string.
 */
 
 #include <stdio.h>
+#include <string.h>
 
 char shift_char(char c, int n)
 {   int n1 = n%26;
@@ -56,7 +59,7 @@ char *caeser(char *s, int n)
 int main(void) 
 {   // Edit the text and the shift number to test
     char text[] = "The quick brown fox jumps over the lazy dog!";
-    printf("%s\n", caeser(text), 3);
-    printf("%s\n", caeser(text), -3);
+    printf("%s\n", caeser(text, 3));        // Encrypt using k
+    printf("%s\n", caeser(text, -3));       // Decrypt if -k is used
     return 0;
 }
