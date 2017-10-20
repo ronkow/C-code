@@ -1,7 +1,7 @@
 /*
 rgb_to_hsl.c
 ------------
-The function rgb_to_hsl(red, green, blue) takes in 3 integers representing Red, Green and Blue, each on a scale of 0–255. 
+rgb_to_hsl(red, green, blue) takes in 3 integers representing Red, Green and Blue, each on a scale of 0–255. 
 The function converts the RGB colours into its closest HSL representation,
 where 0 < Hue < 360, and both Saturation and Luminance are on a scale of 0–100. 
 All three values are rounded to the nearest integers. 
