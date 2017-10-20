@@ -1,8 +1,8 @@
 /*
 pascal.c
 --------
-The function choose(n,k) returns nCk for n from 0 to 29.
-The function pascal_triangle(row) returns the entire row for the input row number (0 to 29) of the pascal's triangle
+choose(n,k) returns nCk for n from 0 to 29.
+pascal_triangle(row) returns the entire row for the input row number (0 to 29) of the pascal's triangle
 */
 
 #include <stdio.h>
