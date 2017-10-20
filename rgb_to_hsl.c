@@ -2,9 +2,9 @@
 rgb_to_hsl.c
 ------------
 The function rgb_to_hsl takes in 3 integers representing Red, Green and Blue, each on a scale of 0–255. 
-The function should convert the RGB colour into its closest HSL representation,
+The function converts the RGB colours into its closest HSL representation,
 where 0 < Hue < 360, and both Saturation and Luminance are on a scale of 0–100. 
-All three values are rounded to the nearest integer. 
+All three values are rounded to the nearest integers. 
 */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@ typedef struct HSL
 
 HSL rgb_to_hsl(int red, int green, int blue) 
 {   int hue, sat, lum;  
-	  int max, min;							  // max and min of R G B (0 to 255)
+    int max, min;						// max and min of R G B (0 to 255)
     float lum_scaled;						// luminance scaled from 0 to 1.0					
 	
 	  // Find max and min of RGB
