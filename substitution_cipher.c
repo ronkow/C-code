@@ -1,5 +1,5 @@
 /*
-substitution_cipher.c
+cipher_substitution.c
 ---------------------
 In cryptography, a cipher is an algorithm for performing encryption or decryption.
 
@@ -75,9 +75,13 @@ char *unsubstitute(char *s, char *key)
 
 int main(void) 
 {   // Edit the text and the substitution key to test
-    char text[] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit!"
+    char text[] = "The quick brown fox jumps over the lazy dog!";
     char key[] = "phqgiumeaylnofdxjkrcvstzwb";
-    printf("%s\n", substitute(text), key);
-    printf("%s\n", unsubstitute(text), key);
+    /*
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    p h q g i u m e a y l n o f d x j k r c v s t z w b
+    */
+    printf("%s\n", substitute(text, key));
+    printf("%s\n", unsubstitute(text, key));
     return 0;
 }
