@@ -47,7 +47,7 @@ void pascal_triangle(int row)
 }
 
 int main(void)
-{   // Enter row number to test
+{   // Edit row number to test
     pascal_triangle(10);
     return 0;
 }
