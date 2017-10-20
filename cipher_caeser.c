@@ -1,5 +1,5 @@
 /*
-caeser_cipher.c
+cipher_caeser.c
 ---------------
 In cryptography, a cipher is an algorithm for performing encryption or decryption.
 
