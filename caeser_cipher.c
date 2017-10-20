@@ -1,6 +1,6 @@
 /*
 caeser_cipher.c
----------
+---------------
 In cryptography, a cipher is an algorithm for performing encryption or decryption.
 
 A Caeser Cipher is also known as a shift cipher. 
