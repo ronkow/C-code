@@ -6,7 +6,7 @@ init_primes(primes[],n) sets all values in the array primes to 1.
 sieve_primes(primes[], size, k) implements the Sieve of Eratosthenes algorithm to remove non-primes.
 If a number i is non-prime, primes[i] will be set to 0.
 
-The idea comes from the fact that multiples of a prime are not prime themselves. 
+The idea comes from the fact that multiples of a prime are not primes. 
 To find all primes from 2 to n, remove all multiples of 2 up to n.
 The smallest remaining number will be 3, which is the next prime. 
 Remove all other multiples of 3 to get 5 as the next prime.
@@ -17,6 +17,7 @@ print_primes(n) prints all primes from 2 to n.
 */
 
 #include <stdio.h>
+#include <stdbool.h>
 
 void init_primes(bool primes[], int n) 
 {   primes[0]=0;
