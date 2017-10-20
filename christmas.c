@@ -5,6 +5,8 @@ print_song(n) prints the entire lyrics of The Twelve Days of Christmas, dependin
 The entire lyrics for n = 12 is shown below after the codes.
 */
 
+#include <stdio.h>
+
 void print_song(int n) 
 {
     char lyric[12][33]
