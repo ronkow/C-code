@@ -22,7 +22,7 @@ HSL rgb_to_hsl(int red, int green, int blue)
     int max, min;						// max and min of R G B (0 to 255)
     float lum_scaled;						// luminance scaled from 0 to 1.0					
 	
-	  // Find max and min of RGB
+    // Find max and min of RGB
     max = red;
     if (green > max) 
         max = green;
@@ -39,7 +39,7 @@ HSL rgb_to_hsl(int red, int green, int blue)
     
 	
     // Calculate Luminance
-    lum_scaled = (max/255.0 + min/255.0) / 2.0;       // Luminance from 0 to 1.0
+    lum_scaled = (max/255.0 + min/255.0) / 2.0;     // Luminance from 0 to 1.0
     lum = round(lum_scaled * 100.0);                // Luminance in %
     
     if (max == min)                                 // IF R = G + B
@@ -50,7 +50,7 @@ HSL rgb_to_hsl(int red, int green, int blue)
     {   // Calculate Saturation
         if (lum_scaled < 0.5)                       // IF Luminance < 50%
             sat = round(((max/1.0 - min/1.0)/(max/1.0 + min/1.0))*100.0);
-        else                                   		  // IF Luminance >= 50%
+        else                                   	    // IF Luminance >= 50%
             sat = round (((max/255.0 - min/255.0)/(2.0 - max/255.0 - min/255.0))*100.0);
             
         // Calculate Hue in degrees 
