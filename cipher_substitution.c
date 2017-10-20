@@ -14,6 +14,9 @@ it is possible to crack the cipher by analysing the frequency of the letters
 and matching it with the known frequency of the language. 
 This is because each letter is always replaced with the same letter.
 
+substitute(s, key) encrypts a string.
+unsubstitute(s, key) decrypts a string.
+
 */
 
 #include <stdio.h>
