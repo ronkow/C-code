@@ -20,31 +20,30 @@ print_primes(n) prints all primes from 2 to n.
 #include <stdbool.h>
 
 void init_primes(bool primes[], int n) 
-{   primes[0]=0;
-    primes[1]=0;
+{
+    primes[0]=0;         
+    primes[1]=0;        
     
     for (int i=2; i<=n; i++)
-       primes[i]=1;
+       primes[i]=1;       
 }
-
 void sieve_primes(bool primes[], int size, int k) 
-{   for (int i=k+1; i<=size; i++)
-    {   if (primes[i]==1 && i%k==0)
-            primes[i]=0;
-    }
+{   for (int i=k+k; i<size; i+=k)               
+        primes[i]=0;
 }
 
 void print_primes(int n) 
-{   bool primes[n+1];    
+{
+    bool primes[n+1];    
     init_primes(primes,n);
     
     for (int i=2; i<=n; i++)
-    {   if (primes[i]==1)
+    {   if (primes[i])              // if (primes[i]==1) 
             sieve_primes(primes,n+1,i);
     }
     
     for (int i=2; i<=n; i++)
-    {   if (primes[i]==1)
+    {   if (primes[i])
            printf("%d ",i);
     }    
 }
