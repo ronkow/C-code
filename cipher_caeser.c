@@ -21,21 +21,21 @@ caeser(s,n) encrypts/decrypts a string.
 #include <string.h>
 
 char shift_char(char c, int n)
-{   int n1 = n%26;
-    int c1 = c + n1;
+{   n %= 26;
+    int c1 = c + n;
     
     if (c>='A' && c<='Z')  
-    {   if (c1>90)
+    {   if (c1>'Z')
             c = c1 - 26;
-        else if (c1<65)
+        else if (c1<'A')
             c = c1 + 26;
         else
             c = c1;
     }
     else if (c>='a' && c<='z')
-    {   if (c1>122)
+    {   if (c1>'z')
             c = c1 - 26;
-        else if (c1<97)
+        else if (c1<'a')
             c = c1 + 26;
         else
             c = c1;
@@ -47,10 +47,10 @@ char *caeser(char *s, int n)
 {   int length = (int)strlen(s);
     char temp[length+1];
 
-    for (int i=0; s[i] != '\0'; ++i)
+    for (int i=0; s[i]!='\0'; ++i)
         temp[i] = shift_char(s[i], n);
     
-    for (int i=0; s[i] != '\0'; ++i)
+    for (int i=0; s[i]!='\0'; ++i)
         s[i] = temp[i];
    
     return s;
