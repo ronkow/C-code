@@ -12,7 +12,7 @@ display_month(month,year) displays the input month and year
 #include <stdbool.h>
 
 bool is_leap_year(int year) 
-{   if ((year%400==0) || (year%4==0 && year%100 != 0))  
+{   if ((year%400==0) || (year%4==0 && year%100!=0))  
         return true;
     else
         return false; 
@@ -21,7 +21,7 @@ bool is_leap_year(int year)
 
 int days_in_month(int month, int year) 
 {   if (month==2)
-    {   if (is_leap_year(year)==1)
+    {   if (is_leap_year(year))
 	   return 29;
 	else
 	   return 28;
@@ -41,7 +41,7 @@ int days_from_epoch(int day, int month, int year)
     // Find the number of days in the FULL years 
     if (year >= 1971)
     {   for (int full_year = 1970; full_year < year; ++full_year)   // full_year <= year-1
-        {   if (is_leap_year(full_year)==1)
+        {   if (is_leap_year(full_year))
                 no_days_year += 366;
             else
                 no_days_year += 365;
@@ -50,7 +50,7 @@ int days_from_epoch(int day, int month, int year)
     }
     else if (year <= 1968)
     {   for (int full_year = 1969; full_year > year; --full_year)   // full_year >= year+1
-        {   if (is_leap_year(full_year)==1)
+        {   if (is_leap_year(full_year))
                 no_days_year -= 366;
             else
                 no_days_year -= 365;
