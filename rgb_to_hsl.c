@@ -19,8 +19,8 @@ typedef struct HSL
 
 HSL rgb_to_hsl(int red, int green, int blue) 
 {   int hue, sat, lum;  
-    int max, min;						// max and min of R G B (0 to 255)
-    float lum_scaled;						// luminance scaled from 0 to 1.0					
+    int max, min;		// max and min of R G B (0 to 255)
+    float lum_scaled;		// luminance scaled from 0 to 1.0					
 	
     // Find max and min of RGB
     max = red;
