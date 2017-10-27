@@ -23,36 +23,24 @@ unsubstitute(s, key) decrypts a string.
 #include <string.h>
 
 char *substitute(char *s, char *key) 
-{   int length = (int)strlen(s);
-    char temp[length+1];
-    
-    int letter_number = 0;
+{   int letter_number = 0;
     
     for (int i=0; s[i] != '\0'; ++i)
     {   if (s[i]>='a' && s[i]<='z')
         {   letter_number = s[i]-97;
-            temp[i] = key[letter_number]; 
+            s[i] = key[letter_number]; 
         }
         else if (s[i]>='A' && s[i]<='Z')
         {   letter_number =s[i]-65;
-            temp[i] = key[letter_number] - 32;
+            s[i] = key[letter_number] - 32;
         }
-        else
-            temp[i] = s[i];
     }
-    
-    for (int i=0; s[i] != '\0'; ++i)
-        s[i] = temp[i];
- 
     return s;
 }
 
 
 char *unsubstitute(char *s, char *key)
-{   int length = (int)strlen(s);
-    char temp[length+1];
-    
-    int letter_number = 0;
+{   int letter_number = 0;
     
     for (int i=0; s[i] != '\0'; ++i)
     {   for (int j=0; j<=25; ++j)
@@ -61,18 +49,11 @@ char *unsubstitute(char *s, char *key)
                 break;
             }
         }
-     
         if (s[i]>='a' && s[i]<='z')
-            temp[i] = letter_number + 97; 
+            s[i] = letter_number + 97; 
         else if (s[i]>='A' && s[i]<='Z')
-            temp[i] = letter_number + 65;
-        else
-            temp[i] = s[i];
+            s[i] = letter_number + 65;
     }
-    
-    for (int i=0; s[i] != '\0'; ++i)
-        s[i] = temp[i];
-    
     return s;
 }
 
