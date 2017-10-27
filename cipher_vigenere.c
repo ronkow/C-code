@@ -50,38 +50,26 @@ char shift_char(char c, int n)
 }
 
 char *vigenere(char *s, int *key) 
-{   int length = (int)strlen(s);
-    char temp[length+1];
-    
-    int length_key=0;
+{   int length_key=0;
 
     for (int i=0; key[i]!=0; ++i)
         length_key += 1;
     
     for (int i=0; s[i]!='\0'; ++i)
-        temp[i] = shift_char(s[i], key[i%length_key]);
+        s[i] = shift_char(s[i], key[i%length_key]);
    
-    for (int i=0; s[i]!='\0'; ++i)
-        s[i] = temp[i];
-    
     return s;
 }
 
 char *unvigenere(char *s, int *key) 
-{   int length = (int)strlen(s);
-    char temp[length+1];
-    
-    int length_key=0;
+{   int length_key=0;
 
     for (int i=0; key[i]!=0; ++i)
         length_key += 1;
     
     for (int i=0; s[i]!='\0'; ++i)
-        temp[i] = shift_char(s[i], -1*key[i%length_key]);
-    
-    for (int i=0; s[i]!='\0'; ++i)
-        s[i] = temp[i];
-    
+        s[i] = shift_char(s[i], -1*key[i%length_key]);
+      
     return s;
 }
 
