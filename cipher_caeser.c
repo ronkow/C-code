@@ -44,15 +44,9 @@ char shift_char(char c, int n)
 }
 
 char *caeser(char *s, int n) 
-{   int length = (int)strlen(s);
-    char temp[length+1];
-
-    for (int i=0; s[i]!='\0'; ++i)
-        temp[i] = shift_char(s[i], n);
-    
-    for (int i=0; s[i]!='\0'; ++i)
-        s[i] = temp[i];
-   
+{   for (int i=0; s[i]!='\0'; ++i)
+        s[i] = shift_char(s[i], n);
+      
     return s;
 }
 
