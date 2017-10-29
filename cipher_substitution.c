@@ -38,21 +38,25 @@ char *substitute(char *s, char *key)
     return s;
 }
 
-
 char *unsubstitute(char *s, char *key)
 {   int letter_number = 0;
     
     for (int i=0; s[i] != '\0'; ++i)
-    {   for (int j=0; j<=25; ++j)
-        {   if (s[i] == key[j] || s[i] + 32 == key[j])
-            {   letter_number = j;
-                break;
+    {   if ((s[i]>='a' && s[i]<='z') || (s[i]>='A' && s[i]<='Z'))  // If s[i] is a letter
+        {   for (int j=0; j<=25; ++j)                     // Scan through 26-letter key to find a match
+            {   if (s[i]==key[j] || (s[i] + 32)==key[j])  // If match between s[i] and key[j] is found, exit loop 
+                {   letter_number = j;
+                    break;
+                }
             }
         }
-        if (s[i]>='a' && s[i]<='z')
-            s[i] = letter_number + 97; 
-        else if (s[i]>='A' && s[i]<='Z')
-            s[i] = letter_number + 65;
+        
+        if (s[i]>='A' && s[i]<='Z')
+        {   s[i] = letter_number + 65;
+        }
+        else if (s[i]>='a' && s[i]<='z')
+        {   s[i] = letter_number + 97; 
+        }
     }
     return s;
 }
