@@ -7,6 +7,29 @@ Upper and lower case letters are equivalent and all non-letters are ignored.
 
 #include <stdio.h>
 
+// Method 1: with arrays
+void freq(char *s)
+{   char letter[27]={'a','b','c','d','e','f','g','h','i','j',
+                    'k','l','m','n','o','p','q','r','s','t',
+                    'u','v','w','x','y','z'};
+    int letter_freq[26]={0};
+     
+    for (int i=0; s[i]!='\0'; ++i)
+    {   if ((s[i]>='A' && s[i]<='Z') || (s[i]>='a' && s[i]<='z'))  // If character is a letter
+        {   for (int j=0; j<=25; ++j)                              // Scan through letter[] array to find a match
+            {   if (s[i]==letter[j] || (s[i] + 32)==letter[j])     // If match between lowercase s[i] and letter[j] is found, exit loop 
+                {   letter_freq[j] += 1;
+                    break;
+                }
+            }
+        }
+    }
+    for (int i=0; letter[i]!='\0'; ++i)
+    {   printf("%c:%d ",letter[i],letter_freq[i]);
+    }
+}
+
+// Method 2: without arrays
 void freq(char *s) 
 {   int a1=0, b1=0, c1=0, d1=0, e1=0, f1=0, g1=0, h1=0, i1=0, 
         j1=0, k1=0, l1=0, m1=0, n1=0, o1=0, p1=0, q1=0, r1=0, 
