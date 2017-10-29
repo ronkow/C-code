@@ -24,8 +24,8 @@ void freq(char *s)
             }
         }
     }
-    for (int i=0; letter[i]!='\0'; ++i)
-    {   printf("%c:%d ",letter[i],letter_freq[i]);
+    for (int j=0; letter[j]!='\0'; ++j)
+    {   printf("%c:%d ",letter[j],letter_freq[j]);
     }
 }
 
