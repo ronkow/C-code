@@ -1,7 +1,7 @@
 /*
 rotate_string.c
 ---------------
-*rotate(s, n) takes a string s and shifts the characters of s by n places, 
+<rotate> takes a string s and shifts the characters of s by n places, 
 causing the characters to wrap around the string. 
 For example, for "Hello World!" , a shift of n = 2 will result in "llo World!He" . 
 The first two characters to be appended to the end of the string. 
