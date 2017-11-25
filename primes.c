@@ -1,9 +1,9 @@
 /*
 primes.c
 --------
-init_primes(primes[],n) sets all values in the array primes to 1.
+<init_primes> sets all values in the array primes to 1.
 
-sieve_primes(primes[], size, k) implements the Sieve of Eratosthenes algorithm to remove non-primes.
+<sieve_primes> implements the Sieve of Eratosthenes algorithm to remove non-primes.
 If a number i is non-prime, primes[i] will be set to 0.
 
 The idea comes from the fact that multiples of a prime are not primes. 
@@ -13,7 +13,7 @@ Remove all other multiples of 3 to get 5 as the next prime.
 Continue this process until no numbers can be removed. 
 The remaining numbers will be all primes from 2 to n.
 
-print_primes(n) prints all primes from 2 to n.
+<print_primes> prints all primes from 2 to n.
 */
 
 #include <stdio.h>
