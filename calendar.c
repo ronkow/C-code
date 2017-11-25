@@ -1,11 +1,11 @@
 /*
 calendar.c
 ----------
-is_leap_year(year) returns true if the input year is a leap year, false if the input year is not a leap year
-days_in_month(month,year) returns the number of days in the input month and year
-days_from_epoch(day,month,year) returns the number of days from "epoch date" 1.1.1970 to the input date (positive if after 1.1.1970, negative if before 1.1.1970)
-day_of_week(day,month,year) returns the day number, 0 (sunday) to 6 (saturday) for the input date
-display_month(month,year) displays the input month and year
+<is_leap_year> returns true if the input year is a leap year, false if the input year is not a leap year
+<days_in_month> returns the number of days in the input month and year
+<days_from_epoch> returns the number of days from "epoch date" 1.1.1970 to the input date (positive if after 1.1.1970, negative if before 1.1.1970)
+<day_of_week> returns the day number, 0 (sunday) to 6 (saturday) for the input date
+<display_month> displays the input month and year
 */
 
 #include <stdio.h>
