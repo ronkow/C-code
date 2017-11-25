@@ -11,10 +11,10 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 d e f g h i j k l m n o p q r s t u v w x y z a b c
 A Caeser Cipher is easily cracked because there are only 26 possible shifts.
 
-shift_char(c, n) shifts a character c (a to z/A to Z) by n characters to the right (positive n) or the left (negative n).
+<shift_char> shifts a character c (a to z/A to Z) by n characters to the right (positive n) or the left (negative n).
 if a character is shifted beyond Z or before A, it wraps around.
 
-caeser(s,n) encrypts/decrypts a string.
+<caeser> encrypts/decrypts a string.
 */
 
 #include <stdio.h>
