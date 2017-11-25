@@ -3,6 +3,7 @@ censor.c
 -----------
 <censor> takes as input a FILE stream <input> and two strings, <match> and <replace>. 
 It prints to stdout the input text with all occurrences of <match> replaced with <replace>.
+The function allows any lengths of <match> and <replace>.
 */
 
 // char_count counts the number of characters in the text file
@@ -15,15 +16,15 @@ int char_count(FILE *input)
 
 void censor(FILE *input, const char *match, const char *replace) 
 {   int max = char_count(input);        // number of characters in the text file + 1
-    char s[max];	                      // Array to store the entire text in text file
+    char s[max];	                // Array to store the entire text in text file
     int i=0;                            // Array index for entire text (uncensored and censored)
     int c;                              // Character in entire text 
     
-    char match_lower[strlen(match)+1];  // Array to store lower case of <match string> (ie, "dog" in test case)
-    char compare[strlen(match)+1];      // Array to store string to match with <match string>     
+    char match_lower[strlen(match)+1];  // Array to store lower case of <match> 
+    char compare[strlen(match)+1];      // Array to store string to match with <match>     
     char temp[max];                     // Array to store entire censored string
-    char temp1[max];                    // Array to store the string between two occurences of <match string>
-    char tail[max];                     // Array to the string after the last occurence of <match string>
+    char temp1[max];                    // Array to store the string between two occurences of <match>
+    char tail[max];                     // Array to the string after the last occurence of <match>
 
     rewind(input);                      // Go back to the start of the text file
     
@@ -33,9 +34,9 @@ void censor(FILE *input, const char *match, const char *replace)
     }
     s[i]='\0';
 
-    for (int i=0; match[i]!='\0'; i++)      // If any character in <match> is an uppercase letter, change it to lowercase, store it in <match_lower>
-    {   if (match[i]>='A' && match[i]<='Z')
-            match_lower[i] = match[i]+32;
+    for (int i=0; match[i]!='\0'; i++)      
+    {   if (match[i]>='A' && match[i]<='Z')	// If any character in <match> is an uppercase letter, change it to lowercase
+            match_lower[i] = match[i]+32;	// store it in <match_lower>
         else
             match_lower[i] = match[i];
     }
@@ -56,14 +57,14 @@ void censor(FILE *input, const char *match, const char *replace)
             compare[j]='\0';
             
             if (strcmp(compare,match_lower)==0)                 // If compare[] and match_lower[] are identical
-            {   if (index==0)                                   // First occurence of <match string> in entire text 
+            {   if (index==0)                                   // First occurence of <match> in entire text 
                 {   for (k=0; k<i; k++)
                         temp[k]=s[index+k];         
                     temp[k]='\0';
 
                     strcat(temp,replace);                                        
                 }        
-                else                                            // Subsequent occurences of <match string> in entire text
+                else                                            // Subsequent occurences of <match> in entire text
                 {   for (k=0; k<i-index; k++)
                         temp1[k]=s[index+k];         
                     temp1[k]='\0';
