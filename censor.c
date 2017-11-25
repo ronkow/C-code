@@ -14,6 +14,16 @@ int char_count(FILE *input)
     return number_of_c;
 }
 
+char *match_lower(char *match)
+{
+    for (int i=0; match[i]!='\0'; i++)
+    {   if (match[i]>='A' && match[i]<='Z')	// If character in <match> is an uppercase letter, change it to lowercase
+            match[i] = match[i]+32;
+    }
+    match[strlen(match)]='\0';
+    return match;
+}
+
 void censor(FILE *input, const char *match, const char *replace) 
 {   int max = char_count(input);        // number of characters in the text file + 1
     char s[max];	                // Array to store the entire text in text file
@@ -34,15 +44,8 @@ void censor(FILE *input, const char *match, const char *replace)
     }
     s[i]='\0';
 
-    for (int i=0; match[i]!='\0'; i++)      
-    {   if (match[i]>='A' && match[i]<='Z')	// If any character in <match> is an uppercase letter, change it to lowercase
-            match_lower[i] = match[i]+32;	// store it in <match_lower>
-        else
-            match_lower[i] = match[i];
-    }
-    match_lower[strlen(match)]='\0';
-
-    
+    match_lower(match);         	// Change <match> to lower case
+ 
     int j, k, index=0;
     
     for (i=0; s[i]!='\0'; i++)      
@@ -61,14 +64,12 @@ void censor(FILE *input, const char *match, const char *replace)
                 {   for (k=0; k<i; k++)
                         temp[k]=s[index+k];         
                     temp[k]='\0';
-
                     strcat(temp,replace);                                        
                 }        
                 else                                            // Subsequent occurences of <match> in entire text
                 {   for (k=0; k<i-index; k++)
                         temp1[k]=s[index+k];         
                     temp1[k]='\0';
-
                     strcat(temp,temp1);
                     strcat(temp,replace);
                 }
@@ -76,11 +77,9 @@ void censor(FILE *input, const char *match, const char *replace)
             }   
         }
     }
-    
     for (k=0; k < strlen(s)-index; k++)
         tail[k] = s[index + k];
     tail[k]='\0';
-
     strcat(temp,tail);                      // Join the last part of the censored string
 
     input = fopen("censored.txt","w+");     // Open new file to write/read the entire censored string
