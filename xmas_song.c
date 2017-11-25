@@ -1,7 +1,7 @@
 /*
 xmas_song.c
 -----------
-print_song(n) prints the entire lyrics of The Twelve Days of Christmas, depending on the number of days n entered.
+<print_song> prints the entire lyrics of The Twelve Days of Christmas, depending on the number of days n entered.
 The entire lyrics for n = 12 is shown below after the codes.
 */
 
