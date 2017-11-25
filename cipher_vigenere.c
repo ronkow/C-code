@@ -19,8 +19,8 @@ Punctuation, space and other non-letter characters remain unchanged.
 shift_char(c, n) shifts a character c (a to z/A to Z) by n characters to the right (positive n) or the left (negative n).
 if a character is shifted beyond Z or before A, it wraps around.
 
-vigenere(s,key) encrypts a string.
-unvigenere(s,key) decrypts a string.
+<vigenere> encrypts a string.
+<unvigenere> decrypts a string.
 */
 
 #include <stdio.h>
