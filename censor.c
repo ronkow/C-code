@@ -24,7 +24,7 @@ char *match_lower(char *match)
     return match;
 }
 
-void censor(FILE *input, const char *match, const char *replace) 
+void censor(FILE *input, char *match, const char *replace) 
 {   int max = char_count(input);        // number of characters in the text file + 1
     char s[max];	                // Array to store the entire text in text file
     int i=0;                            // Array index for entire text (uncensored and censored)
