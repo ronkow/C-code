@@ -1,7 +1,7 @@
 /*
 frequency_letters.c
 -------------------
-freq(s) prints the number of occurrences of each letter in the string s.
+<freq> prints the number of occurrences of each letter in the string s.
 Upper and lower case letters are equivalent and all non-letters are ignored.
 */
 
