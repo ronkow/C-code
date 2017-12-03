@@ -14,15 +14,15 @@ int char_count(FILE *input)
     return number_of_c;
 }
 
-char *match_lower(char *match)
+char match_lower(char *match)
 {
     for (int i=0; match[i]!='\0'; i++)
     {   if (match[i]>='A' && match[i]<='Z')	// If character in <match> is an uppercase letter, change it to lowercase
             match[i] = match[i]+32;
     }
     match[strlen(match)]='\0';
-    return match;
 }
+
 
 void censor(FILE *input, char *match, const char *replace) 
 {   int max = char_count(input);        // number of characters in the text file + 1
@@ -30,7 +30,6 @@ void censor(FILE *input, char *match, const char *replace)
     int i=0;                            // Array index for entire text (uncensored and censored)
     int c;                              // Character in entire text 
     
-    char match_lower[strlen(match)+1];  // Array to store lower case of <match> 
     char compare[strlen(match)+1];      // Array to store string to match with <match>     
     char temp[max];                     // Array to store entire censored string
     char temp1[max];                    // Array to store the string between two occurences of <match>
@@ -49,7 +48,7 @@ void censor(FILE *input, char *match, const char *replace)
     int j, k, index=0;
     
     for (i=0; s[i]!='\0'; i++)      
-    {   if (s[i]==match_lower[0] || s[i]+32==match_lower[0])    // If the first character matches
+    {   if (s[i]==match[0] || s[i]+32==match[0])    // If the first character matches
         {
             for (j=0; j<strlen(match); j++)                     
             {   if (s[i+j]>='A' && s[i+j]<='Z')
@@ -59,7 +58,7 @@ void censor(FILE *input, char *match, const char *replace)
             }
             compare[j]='\0';
             
-            if (strcmp(compare,match_lower)==0)                 // If compare[] and match_lower[] are identical
+            if (strcmp(compare,match)==0)                 // If compare[] and match_lower[] are identical
             {   if (index==0)                                   // First occurence of <match> in entire text 
                 {   for (k=0; k<i; k++)
                         temp[k]=s[index+k];         
