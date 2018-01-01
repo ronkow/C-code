@@ -57,3 +57,10 @@ int main(void)
     printf("%s\n", caeser(text, -3));       // Decrypt if -k is used
     return 0;
 }
+
+/*
+OUTPUT
+------
+Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj!
+The quick brown fox jumps over the lazy dog!
+*/
