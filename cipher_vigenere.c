@@ -81,3 +81,10 @@ int main(void)
     printf("%s\n", unvigenere(text, vkey));
     return 0;
 }
+
+/*
+OUTPUT
+------
+Amy daphe oxvbh sue dqzvz irrx yba rhes qun!
+The quick brown fox jumps over the lazy dog!
+*/
