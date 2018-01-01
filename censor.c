@@ -60,7 +60,7 @@ void censor(FILE *input, char *match, const char *replace)
 	    }
 	}
 		
-	for(int i=0; s1[i]!='\0'; i++)           
+	for(i=0; s1[i]!='\0'; i++)           
 	    putc(s1[i], fp1);
 		
 	putc(' ', fp1);
@@ -80,7 +80,7 @@ int main(void)
 {   FILE *fp;
     fp = fopen("filename.txt","r");
     char s1[]="dog";   // Text string <match>
-    char s2[]="*";    // Text string <replace>
+    char s2[]="*";     // Text string <replace>
     censor(fp,s1,s2);
     fclose(fp);
     return 0;
