@@ -61,12 +61,12 @@ void censor(FILE *input, char *match, const char *replace)
 	}
 		
 	for(i=0; s1[i]!='\0'; i++)           
-	    putc(s1[i], fp1);
+	    fputc(s1[i], fp1);
 		
-	putc(' ', fp1);
+	fputc(' ', fp1);
 			
 	if (fgetc(input)=='\n')
-	    putc('\n',fp1);	
+	    fputc('\n',fp1);	
     }
     fclose(fp1);
 	
