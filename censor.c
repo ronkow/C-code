@@ -79,8 +79,8 @@ void censor(FILE *input, char *match, const char *replace)
 int main(void)
 {   FILE *fp;
     fp = fopen("filename.txt","r");
-    char s1[]="xxxx";   // Text string <match>
-    char s2[]="***";    // Text string <replace>
+    char s1[]="dog";   // Text string <match>
+    char s2[]="*";    // Text string <replace>
     censor(fp,s1,s2);
     fclose(fp);
     return 0;
