@@ -2,99 +2,82 @@
 censor.c
 -----------
 <censor> takes as input a FILE stream <input> and two strings, <match> and <replace>. 
-It prints to stdout the input text with all occurrences of <match> replaced with <replace>.
+It writes the input text in a new file <censored.txt> with all occurrences of <match> replaced with <replace>.
+It then prints to stdout the censored text.
 The function allows any lengths of <match> and <replace>.
 */
 
-// char_count counts the number of characters in the text file
-int char_count(FILE *input)
-{   int c, number_of_c=0;
-    while ((c=fgetc(input))!=EOF)       
-        number_of_c++;
-    return number_of_c;
-}
+#include <stdio.h>
+#include <string.h>
 
-char match_lower(char *match)
-{
-    for (int i=0; match[i]!='\0'; i++)
-    {   if (match[i]>='A' && match[i]<='Z')	// If character in <match> is an uppercase letter, change it to lowercase
-            match[i] = match[i]+32;
+void to_lower(char *s2)
+{   for (int i=0; s2[i]!='\0'; i++)
+    {   if (s2[i]>='A' && s2[i]<='Z')	
+            s2[i] = s2[i]+32;
     }
-    match[strlen(match)]='\0';
+    s2[strlen(s2)]='\0';
 }
-
 
 void censor(FILE *input, char *match, const char *replace) 
-{   int max = char_count(input);        // number of characters in the text file + 1
-    char s[max];	                // Array to store the entire text in text file
-    int i=0;                            // Array index for entire text (uncensored and censored)
-    int c;                              // Character in entire text 
-    
-    char compare[strlen(match)+1];      // Array to store string to match with <match>     
-    char temp[max];                     // Array to store entire censored string
-    char temp1[max];                    // Array to store the string between two occurences of <match>
-    char tail[max];                     // Array to the string after the last occurence of <match>
+{   char s1[100];	// Assume each word in the text file is at most 100 characters		
+    char s1temp[100];
+    char compare[100];
+    char tail[100];
+    int c;
+    int i, j, k;
+	
+    FILE *fp1;
+    fp1 = fopen("censored.txt","w");
+	
+    to_lower(match); 
 
-    rewind(input);                      // Go back to the start of the text file
-    
-    while ((c=fgetc(input))!=EOF)       // Store text in array s[]
-	  {	  s[i] = c;
-          i++;
-    }
-    s[i]='\0';
-
-    match_lower(match);         	// Change <match> to lower case
- 
-    int j, k, index=0;
-    
-    for (i=0; s[i]!='\0'; i++)      
-    {   if (s[i]==match[0] || s[i]+32==match[0])    // If the first character matches
-        {
-            for (j=0; j<strlen(match); j++)                     
-            {   if (s[i+j]>='A' && s[i+j]<='Z')
-                    compare[j] = s[i+j]+32;                     // Store the lowercase character
-                else
-                    compare[j] = s[i+j];
-            }
-            compare[j]='\0';
+    while((fscanf(input,"%s",s1))!= EOF)	// Read word by word
+    {  	strcpy(s1temp,s1);
+	to_lower(s1temp); 
+		
+	if (strcmp(s1temp,match)==0)
+	    strcpy(s1,replace);
+	else 
+	{   for (i=0; s1[i]!='\0'; i++)    	
+	    {   if (s1[i]==match[0])		// If the first character matches
+		{   for (j=0; j<strlen(match); j++)                     
+			compare[j] = s1[i+j];
+				
+		    compare[j]='\0';
             
-            if (strcmp(compare,match)==0)                 // If compare[] and match_lower[] are identical
-            {   if (index==0)                                   // First occurence of <match> in entire text 
-                {   for (k=0; k<i; k++)
-                        temp[k]=s[index+k];         
-                    temp[k]='\0';
-                    strcat(temp,replace);                                        
-                }        
-                else                                            // Subsequent occurences of <match> in entire text
-                {   for (k=0; k<i-index; k++)
-                        temp1[k]=s[index+k];         
-                    temp1[k]='\0';
-                    strcat(temp,temp1);
-                    strcat(temp,replace);
-                }
-                index = i + strlen(match);                      
-            }   
-        }
+		    if (strcmp(compare,match)==0)                  
+		    {	s1temp[i]='\0';
+			strcat(s1temp,replace);                                                        
+		
+			for (k=0; k<strlen(s1)-i-strlen(match); k++)
+			    tail[k] = s1[i+strlen(match) + k];
+						
+			tail[k]='\0';			
+			strcat(s1temp,tail);   
+			strcpy(s1,s1temp);						
+		    }
+		}	
+	    }
+	}
+		
+	for(int i=0; s1[i]!='\0'; i++)           
+	    putc(s1[i], fp1);
+		
+	putc(' ', fp1);
+			
+	if (fgetc(input)=='\n')
+	    putc('\n',fp1);	
     }
-    for (k=0; k < strlen(s)-index; k++)
-        tail[k] = s[index + k];
-    tail[k]='\0';
-    strcat(temp,tail);                      // Join the last part of the censored string
-
-    input = fopen("censored.txt","w+");     // Open new file to write/read the entire censored string
-    
-    for(i=0; temp[i]!='\0'; i++)            // Write the string in temp to the new file
-        putc(temp[i], input);
-        
-    rewind(input);                          // Go back to the start of the text file
-
-    while ((c=fgetc(input))!=EOF)          
-        putc(c, stdout);                   // Output the censored string
+    fclose(fp1);
+	
+    fp1 = fopen("censored.txt","r");
+    while((c=fgetc(fp1))!=EOF)          
+        putc(c, stdout);
+    fclose(fp1);
 }
 
 int main(void)
-{
-    FILE *fp;
+{   FILE *fp;
     fp = fopen("filename.txt","r");
     char s1[]="xxxx";   // Text string <match>
     char s2[]="***";    // Text string <replace>
@@ -102,3 +85,15 @@ int main(void)
     fclose(fp);
     return 0;
 }
+
+/*
+filename.txt
+------------
+Dog the dog in his dog-house dogged a hotdog.
+How undogmatic!
+
+censored.txt
+------------
+* the * in his *-house *ged a hot*.
+How un*matic!
+*/
