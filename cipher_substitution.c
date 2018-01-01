@@ -73,3 +73,10 @@ int main(void)
     printf("%s\n", unsubstitute(text, key));
     return 0;
 }
+
+/*
+OUTPUT
+------
+Cei jvaql hkdtf udz yvoxr dsik cei npbw gdm!
+The quick brown fox jumps over the lazy dog!
+*/
