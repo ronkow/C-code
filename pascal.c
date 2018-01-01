@@ -51,3 +51,9 @@ int main(void)
     pascal_triangle(10);
     return 0;
 }
+
+/*
+OUTPUT
+------
+1 10 45 120 210 252 210 120 45 10 1
+*/
