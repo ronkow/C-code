@@ -36,3 +36,10 @@ int main(void)
     printf("%s\n", rotate(text, -2));
     return 0;
 }
+
+/*
+OUTPUT
+------
+e quick brown fox jumps over the lazy dog!Th
+The quick brown fox jumps over the lazy dog!
+*/
