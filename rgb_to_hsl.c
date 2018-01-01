@@ -79,3 +79,9 @@ int main(void)
 
     return 0;
 }
+
+/*
+OUTPUT
+------
+The result is Hue:193, Sat:66, Lum:28
+*/
