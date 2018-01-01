@@ -45,7 +45,10 @@ int main(void)
     print_song(12);
     return 0;
 }
+
 /*
+OUTPUT
+------
 On the first day of Christmas,
 my true love sent to me,
 a partridge in a pear tree.
