@@ -29,3 +29,23 @@ int main()
    
     return 0;
 }
+
+/*
+OUTPUT
+------
+Please enter a number N (1 to 46): 
+Fibonacci(?) is ?
+
+N     RESULT
+------------
+1	1   
+2	1   
+3	2   
+4	3   
+5	5   
+6	8   
+7	13   
+8	21   
+9	34   
+10	55   and so on
+*/
